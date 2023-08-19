@@ -13,12 +13,11 @@ Note: For convenience, board positions are denoted by a letter representing the 
 
 1. Each player chooses a color to play.
 1. Every game starts with four discs placed in the center of the board, as shown in Figure1.
-  ![Figure1](./rulesFigure1.gif)
+  ![Figure1](./doc/rulesFigure1.gif)
 1. Although the players choose who goes first in normal rules, the player who chooses black is first in this implementation.
 1. Players take turns making moves.
   A move consists of a player a disc of his color on the board.
   The disc must be placed so as to outflank one or more opponent discs, which are then flipped over to the current player's color.
-  
   Outflanking your opponent means to place your disc such that it traps one or more or your opponent's discs between another disc of your color along a horizontal, vertical or diagonal line through the board square.
 1. If a player cannot make a legal move, he forfeits his turn and the other player moves again (this is also known as passing a turn).
   Note that a player may not forfeit his turn voluntarily.
