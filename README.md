@@ -12,7 +12,7 @@ The player who has the most discs on the board at the end of the game wins.
 Note: For convenience, board positions are denoted by a letter representing the column (A through H) and a number representing the row (1 through 8).
 
 1. Each player chooses a color to play.
-1. Every game starts with four discs placed in the center of the board, as shown in Figure1.
+1. Every game starts with four discs placed in the center of the board, as shown in Figure1.  
   ![Figure1](./doc/rulesFigure1.gif)
 1. Although the players choose who goes first in normal rules, the player who chooses black is first in this implementation.
 1. Players take turns making moves.
