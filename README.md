@@ -29,5 +29,24 @@ Note: For convenience, board positions are denoted by a letter representing the 
 
 Note: When making a move, you may outflank your opponent's discs in more than one direction, All outflanked discs are flipped.
 
+## Usecases
+### Start a new game
+1. start this game application.
+1. push "START" button.
+1. choose your disc's color.
+  If you choose black, you are first.
+  Otherwise, your opponent is first.
+1. indicate game board in the application window where there are four discs in the center of the board.
+  Then a new game gets started.
+
+### Moving a game
+1. The black player is first.
+   He places a disc of his color in a square where this disc can outflankes one or more his opponent's discs.
+   To place a disc is to click a square in which he wants to place his disc.
+   Then his turn has finshed.
+1. Next, the white player places a disc and his turn has finished.
+   If there is no square in which he can place a disc, his turn is passed and his opponent's turn comes.
+1. Repeat the above steps until the game has finished
+
 ## Referrence
 - [Reversi Rules](https://documentation.help/Reversi-Rules/rules.htm)
