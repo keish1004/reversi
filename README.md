@@ -32,7 +32,7 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 ## Usecases
 ### Start a new game
 1. start this game application.
-1. push "START" button.
+1. choose "START".
 1. choose your disc's color.
   If you choose black, you are first.
   Otherwise, your opponent is first.
@@ -47,6 +47,16 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 1. Next, the white player places a disc and his turn has finished.
    If there is no square in which he can place a disc, his turn is passed and his opponent's turn comes.
 1. Repeat the above steps until the game has finished
+
+## Required functions
+1. game mode select function:
+  Player can select a playing mode where there are new game mode and exit mode.
+1. playing config function:
+  Player can choose a color he plays before a new game starts.
+1. reversi game function:
+  Player can play reversi game.
+1. auto playing opponent function:
+  Player can play reversi games with a opponent who automatically plays it controlled by a software engine.
 
 ## Referrence
 - [Reversi Rules](https://documentation.help/Reversi-Rules/rules.htm)
