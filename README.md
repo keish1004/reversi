@@ -58,7 +58,7 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 1. auto playing opponent function:
   Player can play reversi games with a opponent who automatically plays it controlled by a software engine.
 
-## State diagrams
+## State diagram
 ```mermaid
 stateDiagram-v2
     direction LR
