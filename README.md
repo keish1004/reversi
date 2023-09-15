@@ -58,5 +58,67 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 1. auto playing opponent function:
   Player can play reversi games with a opponent who automatically plays it controlled by a software engine.
 
+## State diagrams
+```mermaid
+stateDiagram-v2
+    direction LR
+    s1: Main menu
+    s2: Config
+    s3: Game start
+    s4: Black
+    s5: White
+    s6: Result
+    [*] --> s1
+    s1 --> s2
+    s2 --> s1
+    s2 --> s3
+    s3 --> s4
+    s4 --> s5
+    s5 --> s4
+    s4 --> s6
+    s5 --> s6
+    s1 --> [*]
+```
+1. Main menu:  
+  Firstly, contents of main menu screen are displayed.
+  There are new game and exit in the contents.
+  The user can choose an item from them.
+  If he chooses new game, the state is changed to Config.
+  If he chooses exit, this application is finished.
+1. Config:  
+  Config screen is displayed.
+  The user can choose color he plays in a game.
+  Then, he can choose Game Start or Cancel.
+  If he chooses Game Start, the state is changed to Game start.
+  If he chooses Cancel, the state is changed to Main menu.
+1. Game start:  
+  A new game gets started and game screen is displayed.
+  A pass flag is set at off.
+  Then, the state is changed to Black.
+1. Black:  
+  Current board situation is displayed in the screen.
+  The screen shows this turn is black.
+  The black player can choose an action from putting a disc, pass or surrender(*).  
+  If he chooses putting a disc, a validation is carryed out whether the putting is valid or not.
+  If the putting is valid, the board situation is updated and the state is changed to White.
+  Otherwise, he is informed that the putting is invalid and the turn returns (*).  
+  If he chooses pass, a validation is carryed out whether there exist any valid squares or not.
+  If there exist at least a valid square, he is informed that there exist valid and the turn returns (*).
+  Otherwise, the pass is accepted.
+  Then, if the pass flag is off, it turns to on and the state is changed to White.
+  If the pass flag is on, the number of discs of both players is counted, the result of the user is saved in a variable game result and the state is changed to Result.  
+  If he chooses surrender, the result of the user is saved in the game result and the state is changed to Result.
+1. White:  
+  Same as Black but the player is changed to White.
+1. Result:  
+  The result screen is displayed and the game result is shown according to the value of the game result.
+  The user can choose OK and then the state is changed to Main menu.
+
+## Class diagram
+```mermaid
+
+```
+
+
 ## Referrence
 - [Reversi Rules](https://documentation.help/Reversi-Rules/rules.htm)
