@@ -98,12 +98,12 @@ stateDiagram-v2
 1. Black:  
   Current board situation is displayed in the screen.
   The screen shows this turn is black.
-  The black player can choose an action from putting a disc, pass or surrender(*).  
+  The black player can choose an action from putting a disc, pass or surrender(\*).  
   If he chooses putting a disc, a validation is carryed out whether the putting is valid or not.
   If the putting is valid, the board situation is updated and the state is changed to White.
-  Otherwise, he is informed that the putting is invalid and the turn returns (*).  
+  Otherwise, he is informed that the putting is invalid and the turn returns (\*).  
   If he chooses pass, a validation is carryed out whether there exist any valid squares or not.
-  If there exist at least a valid square, he is informed that there exist valid and the turn returns (*).
+  If there exist at least a valid square, he is informed that there exist valid and the turn returns (\*).
   Otherwise, the pass is accepted.
   Then, if the pass flag is off, it turns to on and the state is changed to White.
   If the pass flag is on, the number of discs of both players is counted, the result of the user is saved in a variable game result and the state is changed to Result.  
