@@ -220,17 +220,17 @@ View <|-- ConfigView
 View <|-- GameView
 View <|-- ResultView
 View <|-- ErrorView
-Controller --> View
-Controller --> State
-Controller --> Player
-Controller --> Game
-Game --> GameResult
-Game --> Board
-Board --> Square
-Player --> Game
-Player --> Color
-GameView --> Game
-ResultView --> Game
+Controller "1" --> "5" View
+Controller "1" --> "1" State
+Controller "1" --> "2" Player
+Controller "1" --> "1" Game
+Game "1" --> "1" GameResult
+Game "1" --> "1" Board
+Board "1" --> "100" Square
+Player "1" --> "1" Game
+Player "1" --> "1" Color
+GameView "1" --> "1" Game
+ResultView "1" --> "1" Game
 ```
 
 
