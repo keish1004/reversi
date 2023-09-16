@@ -13,7 +13,7 @@ Note: For convenience, board positions are denoted by a letter representing the 
 
 1. Each player chooses a color to play.
 1. Every game starts with four discs placed in the center of the board, as shown in Figure1.  
-  ![Figure1](./doc/rulesFigure1.gif)
+  ![Figure1](./docs/rulesFigure1.gif)
 1. Although the players choose who goes first in normal rules, the player who chooses black is first in this implementation.
 1. Players take turns making moves.
   A move consists of a player a disc of his color on the board.
