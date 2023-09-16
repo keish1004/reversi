@@ -116,7 +116,121 @@ stateDiagram-v2
 
 ## Class diagram
 ```mermaid
-
+classDiagram
+class View{
+    +input() String
+    +output() void
+}
+class MainMenuView{
+    +input() String
+    +output() void
+}
+class ConfigView{
+    +input() String
+    +output() void
+}
+class GameView{
+    -Game game
+    +input() String
+    +output() void
+}
+class ResultView{
+    -Game game
+    +input() String
+    +output() void
+}
+class ErrorView{
+    +input() String
+    +output() voijd
+}
+class Board{
+    -Square[][] board
+    +int SIZE
+    +update(int, int, Color) boolean
+}
+class Game{
+    -boolean pass_flag
+    -GameResult gameresult
+    -Board board
+    +put_disc(int, int, Color) boolean
+    +pass() boolean
+    +surrender() boolean
+    +is_finished() boolean
+    +get_board() Board
+}
+class Player{
+    -Game game
+    -Color color
+    +put_disc(int, int) boolean
+    +pass() boolean
+    +surrender() boolean
+}
+class Controller{
+    -View mainmenuview
+    -View configview
+    -View gameview
+    -View resultview
+    -View errorview
+    -State state
+    -Color usercolor
+    -Game game
+    -Player user
+    -Player opponent
+    +start() void
+    -do_mainmenu_case() State
+    -do_config_case() State
+    -do_game_case() State
+    -do_result_case() State
+}
+class State{
+    <<enumration>>
+    START
+    MAINMENU
+    CONFIG
+    GAMESTART
+    BLACK
+    WHITE
+    RESULT
+    EXIT
+}
+class Color{
+    <<enumration>>
+    BLACK
+    WHITE
+}
+class GameResult{
+    <<enumration>>
+    WIN
+    LOSE
+    DRAW
+}
+class Square{
+    <<enumration>>
+    BLACK
+    WHITE
+    NONE
+    WALL
+}
+Enum <|-- State
+Enum <|-- Color
+Enum <|-- GameResult
+Enum <|-- Square
+View <|-- MainMenuView
+View <|-- ConfigView
+View <|-- GameView
+View <|-- ResultView
+View <|-- ErrorView
+Controller --> View
+Controller --> State
+Controller --> Player
+Controller --> Game
+Game --> GameResult
+Game --> Board
+Board --> Square
+Player --> Game
+Player --> Color
+GameView --> Game
+ResultView --> Game
 ```
 
 
