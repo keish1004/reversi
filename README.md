@@ -141,7 +141,7 @@ class ResultView{
 }
 class ErrorView{
     +input() String
-    +output() voijd
+    +output() void
 }
 class Board{
     -Square[][] board
