@@ -181,6 +181,7 @@ class Controller{
     -do_config_case() State
     -do_game_case() State
     -do_result_case() State
+    -do_error_case() State
 }
 class State{
     <<enumration>>
@@ -192,6 +193,7 @@ class State{
     WHITE
     RESULT
     EXIT
+    ERROR
 }
 class Color{
     <<enumration>>
