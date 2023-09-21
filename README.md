@@ -156,7 +156,7 @@ class Game{
     +pass() boolean
     +surrender() boolean
     +is_finished() boolean
-    +get_board() Board
+    +get_board_situation() Color[][]
 }
 class Player{
     -Game game
@@ -199,6 +199,8 @@ class Color{
     <<enumration>>
     BLACK
     WHITE
+    NONE
+    +get_opponent(Color) Color
 }
 class GameResult{
     <<enumration>>
