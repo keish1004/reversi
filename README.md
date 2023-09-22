@@ -32,7 +32,7 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 ## Usecases
 ### Start a new game
 1. start this game application.
-1. choose "START".
+1. choose "NEW GAME".
 1. choose your disc's color.
   If you choose black, you are first.
   Otherwise, your opponent is first.
@@ -42,7 +42,7 @@ Note: When making a move, you may outflank your opponent's discs in more than on
 ### Moving a game
 1. The black player is first.
    He places a disc of his color in a square where this disc can outflankes one or more his opponent's discs.
-   To place a disc is to click a square in which he wants to place his disc.
+   To place a disc is to choose a square in which he wants to place his disc.
    Then his turn has finshed.
 1. Next, the white player places a disc and his turn has finished.
    If there is no square in which he can place a disc, his turn is passed and his opponent's turn comes.
@@ -65,8 +65,8 @@ stateDiagram-v2
     s1: Main menu
     s2: Config
     s3: Game start
-    s4: Black
-    s5: White
+    s4: User
+    s5: Opponent
     s6: Result
     [*] --> s1
     s1 --> s2
@@ -94,22 +94,29 @@ stateDiagram-v2
 1. Game start:  
   A new game gets started and game screen is displayed.
   A pass flag is set at off.
-  Then, the state is changed to Black.
-1. Black:  
+  If the user has chosen Black, the state is changed to User.
+  If the user has chosen White, the state is changed to Opponent.
+1. User:  
   Current board situation is displayed in the screen.
-  The screen shows this turn is black.
-  The black player can choose an action from putting a disc, pass or surrender(\*).  
+  This turn's color is shown.
+  The user can choose an action from putting a disc, pass or surrender(\*).  
   If he chooses putting a disc, a validation is carryed out whether the putting is valid or not.
-  If the putting is valid, the board situation is updated and the state is changed to White.
+  If the putting is valid, the board situation is updated and the state is changed to Opponent.
   Otherwise, he is informed that the putting is invalid and the turn returns (\*).  
   If he chooses pass, a validation is carryed out whether there exist any valid squares or not.
   If there exist at least a valid square, he is informed that there exist valid and the turn returns (\*).
   Otherwise, the pass is accepted.
-  Then, if the pass flag is off, it turns to on and the state is changed to White.
+  Then, if the pass flag is off, it turns to on and the state is changed to Opponet.
   If the pass flag is on, the number of discs of both players is counted, the result of the user is saved in a variable game result and the state is changed to Result.  
   If he chooses surrender, the result of the user is saved in the game result and the state is changed to Result.
-1. White:  
-  Same as Black but the player is changed to White.
+1. Opponent:  
+  As well as the state of User, firstly, the current board situation is displayed in the screen.
+  This turn's color is shown and a message saying the opponent player is thinking now is also shown.
+  The opponent player finds valid squares on the board and how many discs are flipped over at each of them.
+  He chooses the one having the highest number of flipped over discs and the state is changed to User.
+  If there is no valid square, he passes this turn.
+  Then, if the pass flag is off, it turns to on and the state is changed to User.
+  If it is on, the number of discs of both players is counted, the result of the user is saved in a variable game result and the state is changed to Result.
 1. Result:  
   The result screen is displayed and the game result is shown according to the value of the game result.
   The user can choose OK and then the state is changed to Main menu.
@@ -145,15 +152,21 @@ class ErrorView{
 }
 class Board{
     -Square[][] board
-    +int SIZE
+    +BOARD_SIZE
+    +WALL_SIZE
+    +LOWER_WALL
+    +UPPER_WALL
+    +LOWER_CENTER
+    +UPPER_CENTER
     +update(int, int, Color) boolean
+    +to_color() Color[][]
 }
 class Game{
     -boolean pass_flag
     -GameResult gameresult
     -Board board
     +put_disc(int, int, Color) boolean
-    +pass() boolean
+    +take_pass() boolean
     +surrender() boolean
     +is_finished() boolean
     +get_board_situation() Color[][]
@@ -162,7 +175,7 @@ class Player{
     -Game game
     -Color color
     +put_disc(int, int) boolean
-    +pass() boolean
+    +take_pass() boolean
     +surrender() boolean
 }
 class Controller{
@@ -189,8 +202,8 @@ class State{
     MAINMENU
     CONFIG
     GAMESTART
-    BLACK
-    WHITE
+    USER
+    OPPONENT
     RESULT
     EXIT
     ERROR
@@ -201,6 +214,7 @@ class Color{
     WHITE
     NONE
     +get_opponent(Color) Color
+    +to_str(Color) String
 }
 class GameResult{
     <<enumration>>
