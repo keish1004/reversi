@@ -152,31 +152,44 @@ class ErrorView{
 }
 class Board{
     -Square[][] board
-    +BOARD_SIZE
-    +WALL_SIZE
-    +LOWER_WALL
-    +UPPER_WALL
-    +LOWER_CENTER
-    +UPPER_CENTER
+    +int BOARD_SIZE
+    +int WALL_SIZE
+    +int LOWER_WALL
+    +int UPPER_WALL
+    +int LOWER_CENTER
+    +int UPPER_CENTER
+    -List DIRECTIONS[]
     +update(int, int, Color) boolean
+    +get_changeable(int, int, Color) List
     +to_color() Color[][]
+    +count() int[][]
 }
 class Game{
-    -boolean pass_flag
+    -boolean passflag
+    -boolean finishflag
     -GameResult gameresult
     -Board board
     +put_disc(int, int, Color) boolean
-    +take_pass() boolean
-    +surrender() boolean
+    +take_pass(Color) boolean
+    +surrender(boolean) boolean
     +is_finished() boolean
     +get_board_situation() Color[][]
+    +set_result() void
+    +get_result() GameResult
+    +get_valid() List
 }
 class Player{
     -Game game
     -Color color
     +put_disc(int, int) boolean
     +take_pass() boolean
-    +surrender() boolean
+    +surrender(boolean) boolean
+}
+class Opponent {
+    -Player player
+    -Game game
+    -Color color
+    +move() boolean
 }
 class Controller{
     -View mainmenuview
@@ -192,7 +205,9 @@ class Controller{
     +start() void
     -do_mainmenu_case() State
     -do_config_case() State
-    -do_game_case() State
+    -make_game() State
+    -do_user_turn() State
+    -do_opponent_turn() State
     -do_result_case() State
     -do_error_case() State
 }
@@ -249,6 +264,9 @@ Player "1" --> "1" Game
 Player "1" --> "1" Color
 GameView "1" --> "1" Game
 ResultView "1" --> "1" Game
+Opponent "1" --> "1" Player
+Opponent "1" --> "1" Game
+Opponent "1" --> "1" Color
 ```
 
 
